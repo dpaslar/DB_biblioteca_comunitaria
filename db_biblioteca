@@ -1,0 +1,53 @@
+CREATE TABLE livros (
+    id_livro SERIAL PRIMARY KEY,
+    titulo VARCHAR(100),
+    autor VARCHAR(100),
+    ano_publicacao INT,
+    genero VARCHAR(50),
+    disponivel BOOLEAN
+);
+
+CREATE TABLE usuarios (
+    id_usuario SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(20),
+    data_cadastro DATE
+);
+
+CREATE TABLE emprestimos (
+    id_emprestimo SERIAL PRIMARY KEY,
+    id_livro INT REFERENCES livros(id_livro),
+    id_usuario INT REFERENCES usuarios(id_usuario),
+    data_emprestimo DATE,
+    data_devolucao DATE,
+    devolvido BOOLEAN
+);
+INSERT INTO livros (titulo, autor, ano_publicacao, genero, disponivel) VALUES
+('1984', 'George Orwell', 1949, 'Distopia', TRUE),
+('Dom Casmurro', 'Machado de Assis', 1899, 'Romance', TRUE),
+('O Hobbit', 'J.R.R. Tolkien', 1937, 'Fantasia', FALSE),
+('Pequeno Príncipe', 'Antoine de Saint-Exupéry', 1943, 'Fábula', TRUE),
+('O Código Da Vinci', 'Dan Brown', 2003, 'Suspense', FALSE);
+
+INSERT INTO usuarios (nome, email, telefone, data_cadastro) VALUES
+('Joana Silva', 'joana@email.com', '11999999999', '2024-01-10'),
+('Carlos Souza', 'carlos@email.com', '11988888888', '2024-01-12'),
+('Maria Oliveira', 'maria@email.com', '11977777777', '2024-02-01');
+
+INSERT INTO emprestimos (id_livro, id_usuario, data_emprestimo, data_devolucao, devolvido) VALUES
+(3, 1, '2024-03-01', NULL, FALSE),
+(5, 2, '2024-03-05', '2024-03-12', TRUE);
+SELECT COUNT(*) AS livros_disponiveis
+FROM livros
+WHERE disponivel = TRUE;
+
+SELECT u.nome, l.titulo, e.data_emprestimo
+FROM emprestimos e
+JOIN usuarios u ON u.id_usuario = e.id_usuario
+JOIN livros l ON l.id_livro = e.id_livro
+WHERE e.devolvido = FALSE;
+
+SELECT ROUND(AVG(e.data_devolucao - e.data_emprestimo), 2) AS media_dias_devolucao
+FROM emprestimos e
+WHERE e.devolvido = TRUE;
