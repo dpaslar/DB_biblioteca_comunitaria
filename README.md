@@ -1,47 +1,35 @@
-# DB_biblioteca_comunitaria
-# Banco de Dados - Biblioteca Comunitária
+# Biblioteca – Gerenciamento de Livros e Empréstimos
+  Introdução
+  Este projeto demonstra habilidades em SQL aplicadas ao gerenciamento de uma biblioteca. O objetivo é criar uma estrutura de banco de dados relacional para organizar livros, usuários e   empréstimos, permitindo consultas estratégicas sobre disponibilidade de livros, histórico de empréstimos e métricas de desempenho.
 
-Este é um projeto simples de banco de dados relacional criado com o objetivo de praticar modelagem, criação e manipulação de dados usando SQL. Ele simula uma biblioteca comunitária fictícia com funcionalidades básicas como cadastro de livros, empréstimos, devoluções e associação de leitores.
+## Estrutura do Banco de Dados
+  O banco de dados contém três tabelas principais:
 
-## Objetivos
+  Livros
+    Armazena informações sobre os livros disponíveis na biblioteca, incluindo título, autor, ano de publicação, gênero e disponibilidade.
 
-- Praticar criação de tabelas com chaves primárias e estrangeiras
-- Simular relacionamentos (1:N, N:M) em SQL
-- Inserir e consultar dados fictícios
-- Produzir um banco de dados para fins didáticos e portfólio
+  Usuários
+    Registra dados dos usuários cadastrados, como nome, email, telefone e data de cadastro.
 
-## Estrutura do Banco
+  Empréstimos
+    Controla os empréstimos realizados, relacionando usuários e livros, com informações sobre datas de empréstimo e devolução, além do status de devolução.
 
-O banco possui 5 tabelas principais:
+## Consultas e Insights
+  O projeto inclui consultas estratégicas para apoiar decisões e análises:
 
-1. `leitores` - Cadastro de pessoas que pegam livros emprestados  
-2. `livros` - Cadastro dos livros disponíveis  
-3. `autores` - Informações sobre os autores  
-4. `emprestimos` - Registro de empréstimos de livros  
-5. `livros_autores` - Tabela de associação entre livros e autores (relacionamento N:M)
+  Livros Disponíveis: Identificação rápida de livros que estão prontos para empréstimo.
 
-## Scripts incluídos
+  Empréstimos Ativos: Lista de usuários com livros ainda não devolvidos e respectivas datas de empréstimo.
 
-- Criação do banco de dados
-- Criação das tabelas com constraints
-- Inserção de dados fictícios
-- Consultas simples de exemplo
+  Média de Devolução: Cálculo do tempo médio de devolução dos livros para monitoramento da eficiência do sistema.
 
-## Exemplos de consultas
+  Essas consultas demonstram capacidade de trabalhar com joins, agregações, filtros e cálculos de métricas.
 
-- Livros atualmente emprestados
-- Leitores que mais realizaram empréstimos
-- Autores com mais livros no acervo
-- Lista de livros disponíveis para empréstimo
+## Skills Demonstradas
+  Modelagem de banco de dados relacional (tabelas, chaves primárias e estrangeiras)
 
-## Como utilizar
+  Criação e inserção de dados em SQL
 
-1. Copie o conteúdo do arquivo SQL
-2. Execute em um banco de dados PostgreSQL local ou em uma plataforma online como o DB Fiddle ou SQL Fiddle
-3. Explore e adapte as consultas conforme desejar
+  Consultas complexas com joins, filtros e agregações
 
-## Autor
-
-Danilo de Avellar Luckner Paslar  
-Projeto feito com fins educacionais e demonstrativos.  
-
+  Cálculo de métricas e indicadores de desempenho
